@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AsposeDiagramCloud"
-  s.version      = "19.1"
+  s.version      = "18.10"
   s.summary      = "Aspose.Diagram Cloud SDK for Swift."
   s.swift_version = "4.1"
 
