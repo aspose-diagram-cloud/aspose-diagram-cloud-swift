@@ -15,6 +15,10 @@ class AlamofireRequestBuilderFactory: RequestBuilderFactory {
     func getBuilder<T:Decodable>() -> RequestBuilder<T>.Type {
         return AlamofireDecodableRequestBuilder<T>.self
     }
+    
+    func getBuilder<T:AnyObject>() -> RequestBuilder<T>.Type {
+        return AlamofireRequestBuilder<T>.self
+    }
 }
 
 // Store manager to retain its reference
@@ -66,10 +70,10 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         let fileKeys = parameters == nil ? [] : parameters!.filter { $1 is NSURL }
                                                            .map { $0.0 }
 
-        //modify by leo.luo, 2018-12
-        //if fileKeys.count > 0 {
+        //modify by leo.luo, 2019-10
+        //For both single and Multiply file trans, we all put muti-heads in it
+        /*
         if fileKeys.count == 1 {
-            
             var imageData :Data?
             do{
                 imageData = try Data(contentsOf: parameters![fileKeys[0]] as! URL, options: Data.ReadingOptions.mappedIfSafe)
@@ -81,6 +85,8 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
             self.processRequest(request: upload, managerId, completion)
             
         } else if fileKeys.count > 1 {
+        */
+        if fileKeys.count > 0 {
             manager.upload(multipartFormData: { mpForm in
                 for (k, v) in self.parameters! {
                     switch v {
@@ -139,7 +145,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                 if stringResponse.result.isFailure {
                     completion(
                         nil,
-                        ErrorResponse.error(stringResponse.response?.statusCode ?? 500, stringResponse.data, stringResponse.result.error as Error!)
+                        ErrorResponse.error(stringResponse.response?.statusCode ?? 500, stringResponse.data, stringResponse.result.error!)
                     )
                     return
                 }
@@ -341,7 +347,7 @@ open class AlamofireDecodableRequestBuilder<T:Decodable>: AlamofireRequestBuilde
                 if stringResponse.result.isFailure {
                     completion(
                         nil,
-                        ErrorResponse.error(stringResponse.response?.statusCode ?? 500, stringResponse.data, stringResponse.result.error as Error!)
+                        ErrorResponse.error(stringResponse.response?.statusCode ?? 500, stringResponse.data, stringResponse.result.error!)
                     )
                     return
                 }

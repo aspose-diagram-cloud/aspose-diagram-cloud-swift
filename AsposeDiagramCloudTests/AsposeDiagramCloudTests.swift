@@ -13,9 +13,15 @@ class AsposeDiagramCloudTests: XCTestCase {
     
     internal let TEMPFOLDER = "Temp"
     internal let testTimeout: TimeInterval = 60.0
-    internal let TestDataFolder = "";
-    internal let File_TEST_GET = "file_get_1.vdx";
-
+    internal let TestDataFolder = ""
+    internal let File_TEST_GET = "file_get_1.vdx"
+    internal let LocalTestSourceFile = "Source.vsd"
+    internal let StorageTestFOLDER = "SDKTests/Swift"
+    
+    //This is only for test, please set your licence here
+    internal let _appSid = "yourClientId"
+    internal let _appKey = "yourClientSecret"
+    
 
     override func setUp() {
         super.setUp()
@@ -31,14 +37,22 @@ class AsposeDiagramCloudTests: XCTestCase {
     
     private func readSettings() {
         
-        //This is only for test, please set your licence here
-        AsposeDiagramCloudAPI.appSid = "84220e69-32e2-41c4-ba2f-662a0a01433e"
-        AsposeDiagramCloudAPI.appKey = "883dc8d6b8ecd879dae35cb363e9eb56"
+        AsposeDiagramCloudAPI.appSid = self._appSid
+        AsposeDiagramCloudAPI.appKey = self._appKey
         
     }
 
     internal func uploadFile(name: String, folder: String = "Temp", completion: @escaping ()->Void) {
-        let path = "\(folder)/\(name)"
+        
+        var path = ""
+        if (folder != "")
+        {
+            path = "\(folder)/\(name)"
+        }
+        else
+        {
+            path = name
+        }
         
         let url: URL? = getURL(name)
         if (nil == url) {
@@ -52,7 +66,7 @@ class AsposeDiagramCloudTests: XCTestCase {
                 XCTFail("error uploading file \(name)")
                 return
             }
-            if let response = response, response.code == HttpStatusCode.ok.rawValue {
+            if let response = response, response.uploaded!.count > 0 {
                 completion()
             } else {
                 XCTFail("error uploading file \(name)")
@@ -83,33 +97,12 @@ class AsposeDiagramCloudTests: XCTestCase {
         return bundle.url(forResource: name, withExtension: nil)
     }
     
-    internal func putCreate(path: String, file: URL, versionId: String? = nil, storage: String? = nil, completion: @escaping ((_ data: SaaSposeResponse?,_ error: Error?) -> Void)) {
-        self.putCreateWithRequestBuilder(path: path, file: file, versionId: versionId, storage: storage).execute { (response, error) -> Void in
-            completion(response?.body, error);
+    internal func putCreate(path: String, file: URL, versionId: String? = nil, storage: String? = nil, completion: @escaping ((_ data: FilesUploadResult?,_ error: Error?) -> Void)) {
+        
+        StorageAPI.uploadFileWithRequestBuilder(path: path, file: file, storageName: storage).execute { (response, error) -> Void in
+            completion(response?.body, error)
         }
+        
     }
     
-    internal func putCreateWithRequestBuilder(path: String, file: URL, versionId: String? = nil, storage: String? = nil) -> RequestBuilder<SaaSposeResponse> {
-        let pathUrl = "/storage/file/\(self.TEMPFOLDER)"
-        let URLString = AsposeDiagramCloudAPI.basePath + pathUrl
-        let formParams: [String:Any?] = [
-            "File": file
-        ]
-        
-        let nonNullParameters = APIHelper.rejectNil(formParams)
-        let parameters = APIHelper.convertBoolToString(nonNullParameters)
-        
-        let urlObj = NSURLComponents(string: URLString)
-        urlObj?.queryItems = APIHelper.mapValuesToQueryItems([
-            "path": path,
-            "versionId": versionId,
-            "storage": storage
-            ])
-        
-        
-        let requestBuilder: RequestBuilder<SaaSposeResponse>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
-        
-        return requestBuilder.init(method: "PUT", URLString: (urlObj?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
 }

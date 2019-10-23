@@ -1,0 +1,6 @@
+framework module Pods_AsposeDiagramCloud {
+  umbrella header "Pods-AsposeDiagramCloud-umbrella.h"
+
+  export *
+  module * { export * }
+}

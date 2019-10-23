@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AsposeDiagramCloud"
-  s.version      = "18.10"
+  s.version      = "19.10"
   s.summary      = "Aspose.Diagram Cloud SDK for Swift."
   s.swift_version = "4.1"
 
@@ -64,7 +64,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "12.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -131,6 +131,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Alamofire", "~> 4.7"
+  s.dependency "Alamofire", "~> 4.8.2"
 
 end
