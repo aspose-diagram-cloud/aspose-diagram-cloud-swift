@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = "This repository contains Aspose.Diagram Cloud SDK for swift source code. This SDK allows you to work with Aspose.Diagram Cloud REST APIs in your swift applications quickly and easily."
 
-  s.homepage     = "https://products.aspose.cloud/diagram/cloud"
+  s.homepage     = "https://products.aspose.cloud/diagram"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
