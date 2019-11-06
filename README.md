@@ -61,6 +61,23 @@ It gives you an ability to:
 * Copy and move files and folders accross separate storages in scope of a single operation
 * Check if certain file, folder or storage exists
 
+# Usage
+Please, add the following [cocoapods](https://cocoapods.org/pods/AsposeDiagramCloud) to your project.
+
+You want to add pod 'AsposeDiagramCloud', '~> 19.10' similar to the following to your Podfile:
+
+```
+target 'MyApp' do
+  pod 'AsposeDiagramCloud', '~> 19.10'
+end
+```
+
+Then run a pod install inside your terminal, or from CocoaPods.app.
+
+Alternatively to give it a test run, run the command:
+
+pod try AsposeDiagramCloud
+
 # Examples
 Please, look at [Examples](EXAMPLES.md) document for basic usage or use the [Examples](Examples) folder for more sophisticated scenarios.
 
