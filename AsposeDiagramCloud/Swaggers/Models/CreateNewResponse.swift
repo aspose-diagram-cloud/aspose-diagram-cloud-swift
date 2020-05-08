@@ -9,7 +9,7 @@ import Foundation
 
 
 
-public struct CreateNewResponse: Codable {
+public class CreateNewResponse: SaaSposeResponse {
 
     public var created: String?
 
@@ -19,8 +19,29 @@ public enum CodingKeys: String, CodingKey {
 
     public init(created: String?) {
         self.created = created
+        super.init()
     }
 
+    // Encodable protocol methods
+    
+    public override func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: String.self)
+        
+        try container.encodeIfPresent(created, forKey: "Created")
+        
+        try super.encode(to: encoder)
+    }
+    
+    // Decodable protocol methods
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        
+        created = try container.decodeIfPresent(String.self, forKey: "Created")
+        
+        try super.init(from: decoder)
+    }
 
 }
 

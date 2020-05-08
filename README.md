@@ -1,74 +1,53 @@
-[Aspose.Diagram Cloud](https://products.aspose.cloud/Diagram) helps you develop diagrams manipulation applications. Our REST API based Diagram Cloud SDK allows your applications to work with Microsoft Visio Object Model. 
+# Swift Cloud REST API for Visio Processing
 
-This repository contains Aspose.Diagram Cloud SDK source code. This SDK allows you to work with Aspose.Diagram Cloud REST APIs in your applications quickly and easily, with zero initial cost.
+This cloud SDK enables your Swift cloud apps to [create & process Visio diagrams](https://products.aspose.cloud/diagram/swift) from within your apps without installing Microsoft Visio.
 
-To use this SDK, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
+## Visio Processing Features
 
+- Retrieve document information of a Visio diagram.
+- Programmatically create a new Microsoft Visio diagram file.
+- Convert Visio flow-charts to other supported formats.
+- Upload your business oriented Visio diagrams to cloud storage.
+- Export Visio files to raster images, fixed-layout and HTML formats.
 
-# Features
+## New Features in Version 20.3
 
-### Support Import Formats  
-* VSDX
-* VDX
-* VSD
-* VSX
-* VTX
-* VSSX
-* VSTX
-* VSDM
-* VSSM
-* VSTM
-* VDW
-* VSS
-* VST
+Added support to draw following objects on a page:
+- Polyline
+- Line
+- Ellipse
 
-### Support Export Formats  
-* VSDX
-* VDX
-* VSX
-* VTX
-* VSSX
-* VSTX
-* VSDM
-* VSSM
-* VSTM
-* PDF
-* XPS
-* SWF
-* SVG
-* EMF
-* JPEG
-* PNG
-* BMP
-* TIFF
-* HTML
+Added support to:
+- Set page setting  
+- Add new empty page
+- Get pages info
 
-### Supported Operations
-* Convert document format
-* Create new document
-* Upload document and save it with supported format
-* Download document with supported format 
+For the detailed notes, please visit [Aspose.Diagram Cloud 20.3 Release Notes](https://docs.aspose.cloud/display/diagramcloud/Aspose.Diagram+Cloud+20.3+Release+Notes).
 
-For the complete list of use-cases, please refer to [common operations format support map](https://docs.aspose.cloud/display/diagramcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap) to see what you can achieve!
+## Read & Write Visio Formats
 
+**Microsoft Visio:** VSDX, VSX, VTX, VDX, VSSX, VSTX, VSDM, VSSM, VSTM
 
-# Storage API support
-#### Since version 19.10, SDK includes support of storage operations for better user experience and unification, so now there's no need to use 2 different SDKs!
+## Save Visio As
 
-It gives you an ability to:
-* Upload, download, copy, move and delete files, including versions handling (if you are using Cloud storage that supports this feature - true by default)
-* Create, copy, move and delete folders
-* Copy and move files and folders accross separate storages in scope of a single operation
-* Check if certain file, folder or storage exists
+**Fixed Layout:** PDF, XPS
+**Images:** JPEG, PNG, BMP, TIFF, SVG, EMF
+**Web:** HTML
+**Other:** XAML, SWF
 
-# Usage
-Please, add the following [cocoapods](https://cocoapods.org/pods/AsposeDiagramCloud) to your project.
+## Read Visio Formats
 
-You want to add pod 'AsposeDiagramCloud', '~> 19.10' similar to the following to your Podfile:
+**Microsoft Visio:** VDW, VSD, VSS, VST
 
-```
+## Getting Started
+
+Please, add the following cocoapods to your project.
+
+You want to add pod `'AsposeDiagramCloud', '~> 20.3'` similar to the following to your Podfile:
+
+```console
 target 'MyApp' do
-  pod 'AsposeDiagramCloud', '~> 19.10'
+  pod 'AsposeDiagramCloud', '~> 20.3'
 end
 ```
 
@@ -76,31 +55,18 @@ Then run a pod install inside your terminal, or from CocoaPods.app.
 
 Alternatively to give it a test run, run the command:
 
-pod try AsposeDiagramCloud
+`pod try AsposeDiagramCloud`
 
-# Examples
-Please, look at [Examples](EXAMPLES.md) document for basic usage or use the [Examples](Examples) folder for more sophisticated scenarios.
+## Examples
 
-### Aspose Cloud-hosted service VS on-premise deployment (*experimental feature*)
-Starting from v19.10, you can choose either to use Aspose Cloud-hosted image processing service (the standard way) or the Docker image from Docker Hub deployed on-premise to serve the requests.
-The details about key differences and deployment process will be described on the dedicated Docker Hub page as soon as it's released.
+Please, look at [Examples](https://github.com/aspose-diagram-cloud/aspose-diagram-cloud-swift/blob/master/EXAMPLES.md) document for basic usage or use the [Examples](https://github.com/aspose-diagram-cloud/aspose-diagram-cloud-swift/blob/master/Examples) folder for more sophisticated scenarios.
 
-# Tests
-Tests are intended for internal usage only.
+## Aspose Cloud-hosted service VS on-premise deployment (experimental feature)
 
-# Licensing
-All Aspose.Diagram Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
+Starting from v19.10, you can choose either to use Aspose Cloud-hosted image processing service (the standard way) or the Docker image from Docker Hub deployed on-premise to serve the requests. The details about key differences and deployment process will be described on the dedicated Docker Hub page as soon as it's released.
 
-# Contact Us
-Your feedback is very important to us. Please feel free to contact via
-+ [**Free Support Forum**](https://forum.aspose.cloud/c/diagram)
-+ [**Paid Support Helpdesk**](https://helpdesk.aspose.cloud/)
+## Licensing
 
-# Resources
-+ [**Website**](https://www.aspose.cloud)
-+ [**Product Home**](https://products.aspose.cloud/diagram)
-+ [**Documentation**](https://docs.aspose.cloud/display/diagramcloud/Home)
-+ [**API Reference**](https://apireference.aspose.cloud/diagram/)
-+ [**Free Support Forum**](https://forum.aspose.cloud/c/diagram)
-+ [**Paid Support Helpdesk**](https://helpdesk.aspose.cloud/)
-+ [**Blog**](https://blog.aspose.cloud/category/diagram/
+All Aspose.Diagram Cloud SDKs, helper scripts and templates are licensed under [MIT License](https://github.com/aspose-diagram-cloud/aspose-diagram-cloud-swift/blob/master/LICENSE).
+
+[Product Page](https://products.aspose.cloud/diagram/swift) | [Documentation](https://docs.aspose.cloud/display/diagramcloud/Home) | [Live Demo](https://products.aspose.app/diagram/family) | [API Reference](https://apireference.aspose.cloud/diagram/) | [Code Samples](https://github.com/aspose-diagram-cloud/aspose-diagram-cloud-swift) | [Blog](https://blog.aspose.cloud/category/diagram/) | [Free Support](https://forum.aspose.cloud/c/diagram) | [Free Trial](https://dashboard.aspose.cloud/#/apps)

@@ -12,20 +12,20 @@ import Foundation
 public struct PdfEncryptionDetails: Codable {
 
     public enum Permissions: String, Codable { 
-        case RAWDISALLOW_ALL_ENUMDISALLOW_ALL = "'{raw=DisallowAll, enum=DisallowAll}'"
-        case RAWPRINTING_ENUMPRINTING = "'{raw=Printing, enum=Printing}'"
-        case RAWMODIFY_CONTENTS_ENUMMODIFY_CONTENTS = "'{raw=ModifyContents, enum=ModifyContents}'"
-        case RAWCONTENT_COPY_ENUMCONTENT_COPY = "'{raw=ContentCopy, enum=ContentCopy}'"
-        case RAWMODIFY_ANNOTATIONS_ENUMMODIFY_ANNOTATIONS = "'{raw=ModifyAnnotations, enum=ModifyAnnotations}'"
-        case RAWFILL_IN_ENUMFILL_IN = "'{raw=FillIn, enum=FillIn}'"
-        case RAWCONTENT_COPY_FOR_ACCESSIBILITY_ENUMCONTENT_COPY_FOR_ACCESSIBILITY = "'{raw=ContentCopyForAccessibility, enum=ContentCopyForAccessibility}'"
-        case RAWDOCUMENT_ASSEMBLY_ENUMDOCUMENT_ASSEMBLY = "'{raw=DocumentAssembly, enum=DocumentAssembly}'"
-        case RAWHIGH_RESOLUTION_PRINTING_ENUMHIGH_RESOLUTION_PRINTING = "'{raw=HighResolutionPrinting, enum=HighResolutionPrinting}'"
-        case RAWALLOW_ALL_ENUMALLOW_ALL = "'{raw=AllowAll, enum=AllowAll}'"
+        case DisallowAll = "DisallowAll"
+        case Printing = "Printing"
+        case ModifyContents = "ModifyContents"
+        case ContentCopy = "ContentCopy"
+        case ModifyAnnotations = "ModifyAnnotations"
+        case FillIn = "FillIn"
+        case ContentCopyForAccessibility = "ContentCopyForAccessibility"
+        case DocumentAssembly = "DocumentAssembly"
+        case HighResolutionPrinting = "HighResolutionPrinting"
+        case AllowAll = "AllowAll"
     }
     public enum EncryptionAlgorithm: String, Codable { 
-        case RAWRC4_40_ENUMRC440 = "'{raw=RC4_40, enum=Rc440}'"
-        case RAWRC4_128_ENUMRC4128 = "'{raw=RC4_128, enum=Rc4128}'"
+        case _40 = "RC4_40"
+        case _128 = "RC4_128"
     }
     public var permissions: Permissions?
     public var encryptionAlgorithm: EncryptionAlgorithm?

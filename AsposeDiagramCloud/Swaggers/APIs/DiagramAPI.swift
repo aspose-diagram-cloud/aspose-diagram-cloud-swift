@@ -208,5 +208,355 @@ open class DiagramAPI {
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
+    
+    
+    /**
+     Remove Page
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) The page name for delete.
+     - parameter folder: (query) Document folder. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deletePage(name: String, pageName: String, folder: String? = nil, completion: @escaping ((_ data: ModifyResponse?,_ error: Error?) -> Void)) {
+        deletePageWithRequestBuilder(name: name, pageName: pageName, folder: folder).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     Remove Page
+     - DELETE /diagram/{name}/pages/{pageName}
+     - OAuth:
+     - type: oauth2
+     - name: JWT
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) The page name for delete.
+     - parameter folder: (query) Document folder. (optional)
+     
+     - returns: RequestBuilder<ModifyResponse>
+     */
+    open class func deletePageWithRequestBuilder(name: String, pageName: String, folder: String? = nil) -> RequestBuilder<ModifyResponse> {
+        var _path = "/diagram/{name}/pages/{pageName}"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let pageNamePreEscape = "\(pageName)"
+        let pageNamePostEscape = pageNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{pageName}", with: pageNamePostEscape, options: .literal, range: nil)
+        let URLString = AsposeDiagramCloudAPI.basePath + _path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "folder": folder
+            ])
+        
+        let requestBuilder: RequestBuilder<ModifyResponse>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
+    /**
+     Read pages info.
+     
+     - parameter name: (path) Document name.
+     - parameter folder: (query) Document folder. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getPages(name: String, folder: String? = nil, completion: @escaping ((_ data: ApiResponseOfListOfPageData?,_ error: Error?) -> Void)) {
+        getPagesWithRequestBuilder(name: name, folder: folder).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     Read pages info.
+     - GET /diagram/{name}/pages
+     - OAuth:
+     - type: oauth2
+     - name: JWT
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter name: (path) Document name.
+     - parameter folder: (query) Document folder. (optional)
+     
+     - returns: RequestBuilder<ApiResponseOfListOfPageData>
+     */
+    open class func getPagesWithRequestBuilder(name: String, folder: String? = nil) -> RequestBuilder<ApiResponseOfListOfPageData> {
+        var _path = "/diagram/{name}/pages"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let URLString = AsposeDiagramCloudAPI.basePath + _path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "folder": folder
+            ])
+        
+        let requestBuilder: RequestBuilder<ApiResponseOfListOfPageData>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
+    /**
+     page setup
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (query) The page name for setting.
+     - parameter pageSetting: (body) Page setting info.
+     - parameter folder: (query) Document folder. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func postPageSetup(name: String, pageName: String, pageSetting: PageSetting, folder: String? = nil, completion: @escaping ((_ data: ModifyResponse?,_ error: Error?) -> Void)) {
+        postPageSetupWithRequestBuilder(name: name, pageName: pageName, pageSetting: pageSetting, folder: folder).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     page setup
+     - POST /diagram/{name}/pages/PageSetup
+     - OAuth:
+     - type: oauth2
+     - name: JWT
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (query) The page name for setting.
+     - parameter pageSetting: (body) Page setting info.
+     - parameter folder: (query) Document folder. (optional)
+     
+     - returns: RequestBuilder<ModifyResponse>
+     */
+    open class func postPageSetupWithRequestBuilder(name: String, pageName: String, pageSetting: PageSetting, folder: String? = nil) -> RequestBuilder<ModifyResponse> {
+        var _path = "/diagram/{name}/pages/PageSetup"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let URLString = AsposeDiagramCloudAPI.basePath + _path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pageSetting)
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "pageName": pageName,
+            "folder": folder
+            ])
+        
+        let requestBuilder: RequestBuilder<ModifyResponse>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    /**
+     Add new empty page
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (query) New page name.
+     - parameter folder: (query) Document folder. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putNewPage(name: String, pageName: String, folder: String? = nil, completion: @escaping ((_ data: ModifyResponse?,_ error: Error?) -> Void)) {
+        putNewPageWithRequestBuilder(name: name, pageName: pageName, folder: folder).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     Add new empty page
+     - PUT /diagram/{name}/pages/addNew
+     - OAuth:
+     - type: oauth2
+     - name: JWT
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (query) New page name.
+     - parameter folder: (query) Document folder. (optional)
+     
+     - returns: RequestBuilder<ModifyResponse>
+     */
+    open class func putNewPageWithRequestBuilder(name: String, pageName: String, folder: String? = nil) -> RequestBuilder<ModifyResponse> {
+        var _path = "/diagram/{name}/pages/addNew"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let URLString = AsposeDiagramCloudAPI.basePath + _path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "pageName": pageName,
+            "folder": folder
+            ])
+        
+        let requestBuilder: RequestBuilder<ModifyResponse>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    
+    /**
+     draw ellipse on the page.
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) Page name.
+     - parameter ellipseData: (body) drawing ellipse data.
+     - parameter folder: (query) Document folder. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putDrawEllipse(name: String, pageName: String, ellipseData: EllipseData, folder: String? = nil, completion: @escaping ((_ data: ModifyResponse?,_ error: Error?) -> Void)) {
+        putDrawEllipseWithRequestBuilder(name: name, pageName: pageName, ellipseData: ellipseData, folder: folder).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    /**
+     draw ellipse on the page.
+     - PUT /diagram/{name}/pages/{pageName}/drawEllipse
+     - OAuth:
+     - type: oauth2
+     - name: JWT
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) Page name.
+     - parameter ellipseData: (body) drawing ellipse data.
+     - parameter folder: (query) Document folder. (optional)
+     
+     - returns: RequestBuilder<ModifyResponse>
+     */
+    open class func putDrawEllipseWithRequestBuilder(name: String, pageName: String, ellipseData: EllipseData, folder: String? = nil) -> RequestBuilder<ModifyResponse> {
+        var _path = "/diagram/{name}/pages/{pageName}/drawEllipse"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let pageNamePreEscape = "\(pageName)"
+        let pageNamePostEscape = pageNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{pageName}", with: pageNamePostEscape, options: .literal, range: nil)
+        let URLString = AsposeDiagramCloudAPI.basePath + _path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: ellipseData)
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "folder": folder
+            ])
+        
+        let requestBuilder: RequestBuilder<ModifyResponse>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    /**
+     draw line on the page.
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) Page name.
+     - parameter lineData: (body) drawing line data.
+     - parameter folder: (query) Document folder. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putDrawLine(name: String, pageName: String, lineData: LineData, folder: String? = nil, completion: @escaping ((_ data: ModifyResponse?,_ error: Error?) -> Void)) {
+        putDrawLineWithRequestBuilder(name: name, pageName: pageName, lineData: lineData, folder: folder).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     draw line on the page.
+     - PUT /diagram/{name}/pages/{pageName}/drawLine
+     - OAuth:
+     - type: oauth2
+     - name: JWT
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) Page name.
+     - parameter lineData: (body) drawing line data.
+     - parameter folder: (query) Document folder. (optional)
+     
+     - returns: RequestBuilder<ModifyResponse>
+     */
+    open class func putDrawLineWithRequestBuilder(name: String, pageName: String, lineData: LineData, folder: String? = nil) -> RequestBuilder<ModifyResponse> {
+        var _path = "/diagram/{name}/pages/{pageName}/drawLine"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let pageNamePreEscape = "\(pageName)"
+        let pageNamePostEscape = pageNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{pageName}", with: pageNamePostEscape, options: .literal, range: nil)
+        let URLString = AsposeDiagramCloudAPI.basePath + _path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: lineData)
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "folder": folder
+            ])
+        
+        let requestBuilder: RequestBuilder<ModifyResponse>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    /**
+     draw polyline on the page.
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) Page name.
+     - parameter polylineData: (body) drawing polyline data.
+     - parameter folder: (query) Document folder. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putDrawPolyline(name: String, pageName: String, polylineData: PolylineData, folder: String? = nil, completion: @escaping ((_ data: ModifyResponse?,_ error: Error?) -> Void)) {
+        putDrawPolylineWithRequestBuilder(name: name, pageName: pageName, polylineData: polylineData, folder: folder).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    
+    /**
+     draw polyline on the page.
+     - PUT /diagram/{name}/pages/{pageName}/drawPolyline
+     - OAuth:
+     - type: oauth2
+     - name: JWT
+     - examples: [{contentType=application/json, example=""}]
+     
+     - parameter name: (path) Document name.
+     - parameter pageName: (path) Page name.
+     - parameter polylineData: (body) drawing polyline data.
+     - parameter folder: (query) Document folder. (optional)
+     
+     - returns: RequestBuilder<ModifyResponse>
+     */
+    open class func putDrawPolylineWithRequestBuilder(name: String, pageName: String, polylineData: PolylineData, folder: String? = nil) -> RequestBuilder<ModifyResponse> {
+        var _path = "/diagram/{name}/pages/{pageName}/drawPolyline"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let pageNamePreEscape = "\(pageName)"
+        let pageNamePostEscape = pageNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        _path = _path.replacingOccurrences(of: "{pageName}", with: pageNamePostEscape, options: .literal, range: nil)
+        let URLString = AsposeDiagramCloudAPI.basePath + _path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: polylineData)
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "folder": folder
+            ])
+        
+        let requestBuilder: RequestBuilder<ModifyResponse>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
 
 }

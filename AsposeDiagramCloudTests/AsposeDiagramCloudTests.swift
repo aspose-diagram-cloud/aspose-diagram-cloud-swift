@@ -17,6 +17,9 @@ class AsposeDiagramCloudTests: XCTestCase {
     internal let File_TEST_GET = "file_get_1.vdx"
     internal let LocalTestSourceFile = "Source.vsd"
     internal let StorageTestFOLDER = "SDKTests/Swift"
+    internal let File_TEST_PAGE = "PageTest.vsdx"
+    internal let File_TEST_DRAWING = "drawingTest.vsdx"
+    internal let Test_Page_Name = "Page-0"
     
     //This is only for test, please set your licence here
     internal let _appSid = "yourClientId"
@@ -29,6 +32,7 @@ class AsposeDiagramCloudTests: XCTestCase {
         // read App Key and App Sid from setup.json file
         // Get App key and App SID from https://cloud.aspose.com
         readSettings()
+        
     }
 
     override func tearDown() {
@@ -36,10 +40,8 @@ class AsposeDiagramCloudTests: XCTestCase {
     }
     
     private func readSettings() {
-        
         AsposeDiagramCloudAPI.appSid = self._appSid
         AsposeDiagramCloudAPI.appKey = self._appKey
-        
     }
 
     internal func uploadFile(name: String, folder: String = "Temp", completion: @escaping ()->Void) {

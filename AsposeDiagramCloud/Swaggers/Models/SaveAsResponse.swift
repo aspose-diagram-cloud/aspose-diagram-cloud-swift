@@ -9,7 +9,7 @@ import Foundation
 
 
 
-public struct SaveAsResponse: Codable {
+public class SaveAsResponse: SaaSposeResponse {
 
     public var sourceFile: String?
     public var savedFile: String?
@@ -25,8 +25,33 @@ public enum CodingKeys: String, CodingKey {
         self.sourceFile = sourceFile
         self.savedFile = savedFile
         self.additionals = additionals
+        super.init()
     }
 
+    // Encodable protocol methods
+    
+    public override func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: String.self)
+        
+        try container.encodeIfPresent(sourceFile, forKey: "SourceFile")
+        try container.encodeIfPresent(savedFile, forKey: "SavedFile")
+        try container.encodeIfPresent(additionals, forKey: "Additionals")
+        
+        try super.encode(to: encoder)
+    }
+    
+    // Decodable protocol methods
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        
+        sourceFile = try container.decodeIfPresent(String.self, forKey: "SourceFile")
+        savedFile = try container.decodeIfPresent(String.self, forKey: "SavedFile")
+        additionals = try container.decodeIfPresent([String].self, forKey: "Additionals")
+        
+        try super.init(from: decoder)
+    }
 
 }
 

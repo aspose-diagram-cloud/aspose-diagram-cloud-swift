@@ -33,36 +33,19 @@ public class AuthAspose {
                 return
             }
             
-            let path = "/connect/token"
-            let urlString = AsposeDiagramCloudAPI.basePath.replacingOccurrences(of: "/v3.0", with: "") + path
-            let parameters: [String: Any] = [
-                "grant_type": "client_credentials",
-                "client_id": appSid,
-                "client_secret": appKey]
-            
-            let headers: [String: String] = [
-                "Content-Type": "application/x-www-form-urlencoded"
-            ]
-            
-            Alamofire.request(urlString, method: .post, parameters: parameters, headers: headers).responseJSON {
-                
-                responseJSON in
-                
-                guard let statusCode = responseJSON.response?.statusCode, let jsonArray = responseJSON.result.value as? [String: Any] else {
-                    completion(AuthError.authError)
+            let grantType:String = "client_credentials"
+            OAuthAPI.oAuthPost(grantType: grantType, clientId: appSid, clientSecret: appKey)
+            {
+                (response, error) in
+                guard error == nil else {
+                    completion(error as? AuthAspose.AuthError)
                     return
                 }
                 
-                if (HttpStatusCode.ok.rawValue == statusCode) {
-                    AsposeDiagramCloudAPI.accessToken = jsonArray["access_token"] as? String
-                    AsposeDiagramCloudAPI.refreshToken = jsonArray["refresh_token"] as? String
+                if let response = response {
+                    AsposeDiagramCloudAPI.accessToken = response.accessToken
+                    AsposeDiagramCloudAPI.refreshToken = response.refreshToken
                     completion(nil)
-                    
-                } else if (HttpStatusCode.unauthorized.rawValue == statusCode) {
-                    completion(AuthError.unauthorizedError)
-                }
-                else {
-                    completion(AuthError.authError)
                 }
             }
         }

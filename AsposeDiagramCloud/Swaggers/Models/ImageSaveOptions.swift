@@ -12,51 +12,51 @@ import Foundation
 public class ImageSaveOptions: RenderingSaveOptions {
 
     public enum TiffCompression: String, Codable { 
-        case RAWNONE_ENUMNONE = "'{raw=None, enum=None}'"
-        case RAWRLE_ENUMRLE = "'{raw=Rle, enum=Rle}'"
-        case RAWCCITT3_ENUMCCITT3 = "'{raw=Ccitt3, enum=Ccitt3}'"
-        case RAWCCITT4_ENUMCCITT4 = "'{raw=Ccitt4, enum=Ccitt4}'"
-        case RAWLZW_ENUMLZW = "'{raw=Lzw, enum=Lzw}'"
+        case None = "None"
+        case Rle = "Rle"
+        case Ccitt3 = "Ccitt3"
+        case Ccitt4 = "Ccitt4"
+        case Lzw = "Lzw"
     }
     public enum ImageColorMode: String, Codable { 
-        case RAWNONE_ENUMNONE = "'{raw=None, enum=None}'"
-        case RAWGRAYSCALE_ENUMGRAYSCALE = "'{raw=Grayscale, enum=Grayscale}'"
-        case RAWBLACK_AND_WHITE_ENUMBLACK_AND_WHITE = "'{raw=BlackAndWhite, enum=BlackAndWhite}'"
+        case None = "None"
+        case Grayscale = "Grayscale"
+        case BlackAndWhite = "BlackAndWhite"
     }
     public enum PixelOffsetMode: String, Codable { 
-        case RAWDEFAULT_ENUMDEFAULT = "'{raw=Default, enum=Default}'"
-        case RAWHIGH_SPEED_ENUMHIGH_SPEED = "'{raw=HighSpeed, enum=HighSpeed}'"
-        case RAWHIGH_QUALITY_ENUMHIGH_QUALITY = "'{raw=HighQuality, enum=HighQuality}'"
-        case RAWNONE_ENUMNONE = "'{raw=None, enum=None}'"
-        case RAWHALF_ENUMHALF = "'{raw=Half, enum=Half}'"
-        case RAWINVALID_ENUMINVALID = "'{raw=Invalid, enum=Invalid}'"
+        case Default = "Default"
+        case HighSpeed = "HighSpeed"
+        case HighQuality = "HighQuality"
+        case None = "None"
+        case Half = "Half"
+        case Invalid = "Invalid"
     }
     public enum SmoothingMode: String, Codable { 
-        case RAWDEFAULT_ENUMDEFAULT = "'{raw=Default, enum=Default}'"
-        case RAWHIGH_SPEED_ENUMHIGH_SPEED = "'{raw=HighSpeed, enum=HighSpeed}'"
-        case RAWHIGH_QUALITY_ENUMHIGH_QUALITY = "'{raw=HighQuality, enum=HighQuality}'"
-        case RAWNONE_ENUMNONE = "'{raw=None, enum=None}'"
-        case RAWANTI_ALIAS_ENUMANTI_ALIAS = "'{raw=AntiAlias, enum=AntiAlias}'"
-        case RAWINVALID_ENUMINVALID = "'{raw=Invalid, enum=Invalid}'"
+        case Default = "Default"
+        case HighSpeed = "HighSpeed"
+        case HighQuality = "HighQuality"
+        case None = "None"
+        case AntiAlias = "AntiAlias"
+        case Invalid = "Invalid"
     }
     public enum CompositingQuality: String, Codable { 
-        case RAWDEFAULT_ENUMDEFAULT = "'{raw=Default, enum=Default}'"
-        case RAWHIGH_SPEED_ENUMHIGH_SPEED = "'{raw=HighSpeed, enum=HighSpeed}'"
-        case RAWHIGH_QUALITY_ENUMHIGH_QUALITY = "'{raw=HighQuality, enum=HighQuality}'"
-        case RAWGAMMA_CORRECTED_ENUMGAMMA_CORRECTED = "'{raw=GammaCorrected, enum=GammaCorrected}'"
-        case RAWASSUME_LINEAR_ENUMASSUME_LINEAR = "'{raw=AssumeLinear, enum=AssumeLinear}'"
-        case RAWINVALID_ENUMINVALID = "'{raw=Invalid, enum=Invalid}'"
+        case Default = "Default"
+        case HighSpeed = "HighSpeed"
+        case HighQuality = "HighQuality"
+        case GammaCorrected = "GammaCorrected"
+        case AssumeLinear = "AssumeLinear"
+        case Invalid = "Invalid"
     }
     public enum InterpolationMode: String, Codable { 
-        case RAWDEFAULT_ENUMDEFAULT = "'{raw=Default, enum=Default}'"
-        case RAWLOW_ENUMLOW = "'{raw=Low, enum=Low}'"
-        case RAWHIGH_ENUMHIGH = "'{raw=High, enum=High}'"
-        case RAWBILINEAR_ENUMBILINEAR = "'{raw=Bilinear, enum=Bilinear}'"
-        case RAWBICUBIC_ENUMBICUBIC = "'{raw=Bicubic, enum=Bicubic}'"
-        case RAWNEAREST_NEIGHBOR_ENUMNEAREST_NEIGHBOR = "'{raw=NearestNeighbor, enum=NearestNeighbor}'"
-        case RAWHIGH_QUALITY_BILINEAR_ENUMHIGH_QUALITY_BILINEAR = "'{raw=HighQualityBilinear, enum=HighQualityBilinear}'"
-        case RAWHIGH_QUALITY_BICUBIC_ENUMHIGH_QUALITY_BICUBIC = "'{raw=HighQualityBicubic, enum=HighQualityBicubic}'"
-        case RAWINVALID_ENUMINVALID = "'{raw=Invalid, enum=Invalid}'"
+        case Default = "Default"
+        case Low = "Low"
+        case High = "High"
+        case Bilinear = "Bilinear"
+        case Bicubic = "Bicubic"
+        case NearestNeighbor = "NearestNeighbor"
+        case HighQualityBilinear = "HighQualityBilinear"
+        case HighQualityBicubic = "HighQualityBicubic"
+        case Invalid = "Invalid"
     }
 
     public var imageBrightness: Double?

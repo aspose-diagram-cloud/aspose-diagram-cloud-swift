@@ -24,8 +24,6 @@ public enum CodingKeys: String, CodingKey {
     }
 
     public init(saveFormat: SaveFormat?, defaultFont: String?, area: RectangleF?, exportGuideShapes: Bool?, pageSize: PageSize?, isExportComments: Bool?) {
-        //self.saveFormat = saveFormat
-        //self.defaultFont = defaultFont
         self.area = area
         self.exportGuideShapes = exportGuideShapes
         self.pageSize = pageSize

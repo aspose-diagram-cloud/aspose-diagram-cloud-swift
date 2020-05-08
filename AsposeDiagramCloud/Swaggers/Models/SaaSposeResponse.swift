@@ -9,11 +9,23 @@ import Foundation
 
 
 
-public struct SaaSposeResponse: Codable {
+public class SaaSposeResponse: Codable {
+    
+    public init() {
 
+    }
+    
+    // Encodable protocol methods
+    
+    public func encode(to encoder: Encoder) throws {
+        
+    }
+    
+    // Decodable protocol methods
+    
+    public required init(from decoder: Decoder) throws {
 
-
-
+    }
 
 }
 

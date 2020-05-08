@@ -12,11 +12,11 @@ import Foundation
 public struct PdfDigitalSignatureDetails: Codable {
 
     public enum HashAlgorithm: String, Codable { 
-        case RAWSHA1_ENUMSHA1 = "'{raw=Sha1, enum=Sha1}'"
-        case RAWSHA256_ENUMSHA256 = "'{raw=Sha256, enum=Sha256}'"
-        case RAWSHA384_ENUMSHA384 = "'{raw=Sha384, enum=Sha384}'"
-        case RAWSHA512_ENUMSHA512 = "'{raw=Sha512, enum=Sha512}'"
-        case RAWMD5_ENUMMD5 = "'{raw=Md5, enum=Md5}'"
+        case Sha1 = "Sha1"
+        case Sha256 = "Sha256"
+        case Sha384 = "Sha384"
+        case Sha512 = "Sha512"
+        case Md5 = "Md5"
     }
     public var signatureDate: String?
     public var reason: String?

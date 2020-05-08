@@ -12,20 +12,14 @@ import Foundation
 public class PdfSaveOptions: RenderingSaveOptions {
 
     public enum Compliance: String, Codable { 
-        case RAWPDF15_ENUMPDF15 = "'{raw=Pdf15, enum=Pdf15}'"
-        case RAWPDF_A1A_ENUMPDF_A1A = "'{raw=PdfA1a, enum=PdfA1a}'"
-        case RAWPDF_A1B_ENUMPDF_A1B = "'{raw=PdfA1b, enum=PdfA1b}'"
+        case Pdf15 = "Pdf15"
+        case PdfA1a = "PdfA1a"
+        case PdfA1b = "PdfA1b"
     }
     public enum TextCompression: String, Codable { 
-        case RAWNONE_ENUMNONE = "'{raw=None, enum=None}'"
-        case RAWFLATE_ENUMFLATE = "'{raw=Flate, enum=Flate}'"
+        case None = "None"
+        case Flate = "Flate"
     }
-    //public var saveFormat: SaveFormat
-    //public var defaultFont: String?
-    //public var area: RectangleF
-    //public var exportGuideShapes: Bool?
-    //public var pageSize: PageSize?
-    //public var isExportComments: Bool?
     public var horizontalResolution: Int32?
     public var verticalResolution: Int32?
     public var pageCount: Int32?
@@ -40,12 +34,6 @@ public class PdfSaveOptions: RenderingSaveOptions {
     public var digitalSignatureDetails: PdfDigitalSignatureDetails?
 
 public enum CodingKeys: String, CodingKey { 
-        //case saveFormat = "SaveFormat"
-        //case defaultFont = "DefaultFont"
-        //case area = "Area"
-        //case exportGuideShapes = "ExportGuideShapes"
-        //case pageSize = "PageSize"
-        //case isExportComments = "IsExportComments"
         case horizontalResolution = "HorizontalResolution"
         case verticalResolution = "VerticalResolution"
         case pageCount = "PageCount"

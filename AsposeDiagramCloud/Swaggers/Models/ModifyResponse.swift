@@ -9,7 +9,7 @@ import Foundation
 
 
 
-public struct ModifyResponse: Codable {
+public class ModifyResponse: SaaSposeResponse {
 
     public var isSuccess: Bool
     public var message: String?
@@ -22,8 +22,31 @@ public enum CodingKeys: String, CodingKey {
     public init(isSuccess: Bool, message: String?) {
         self.isSuccess = isSuccess
         self.message = message
+        super.init()
     }
 
+    // Encodable protocol methods
+    
+    public override func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: String.self)
+        
+        try container.encodeIfPresent(isSuccess, forKey: "IsSuccess")
+        try container.encodeIfPresent(message, forKey: "Message")
+        
+        try super.encode(to: encoder)
+    }
+    
+    // Decodable protocol methods
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        
+        isSuccess = try container.decodeIfPresent(Bool.self, forKey: "IsSuccess")!
+        message = try container.decodeIfPresent(String.self, forKey: "Message")
+        
+        try super.init(from: decoder)
+    }
 
 }
 

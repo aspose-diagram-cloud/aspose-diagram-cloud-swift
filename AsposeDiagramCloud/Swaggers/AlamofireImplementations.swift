@@ -63,29 +63,21 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         // Create a new manager for each request to customize its request header
         let manager = createSessionManager()
         managerStore[managerId] = manager
-
+        
+        /*
+        //This is only for sniffer package testing, you may not need it
+        manager.delegate.sessionDidReceiveChallenge = {
+            session,challenge in
+            return    (URLSession.AuthChallengeDisposition.useCredential,URLCredential(trust:challenge.protectionSpace.serverTrust!))
+        }
+        */
+        
         let encoding:ParameterEncoding = isBody ? JSONDataEncoding() : URLEncoding()
 
         let xMethod = Alamofire.HTTPMethod(rawValue: method)
         let fileKeys = parameters == nil ? [] : parameters!.filter { $1 is NSURL }
                                                            .map { $0.0 }
 
-        //modify by leo.luo, 2019-10
-        //For both single and Multiply file trans, we all put muti-heads in it
-        /*
-        if fileKeys.count == 1 {
-            var imageData :Data?
-            do{
-                imageData = try Data(contentsOf: parameters![fileKeys[0]] as! URL, options: Data.ReadingOptions.mappedIfSafe)
-            } catch {
-                fatalError(error.localizedDescription)
-            }
-            
-            let upload = manager.upload(imageData!, to: URLString, method: xMethod!, headers: headers)
-            self.processRequest(request: upload, managerId, completion)
-            
-        } else if fileKeys.count > 1 {
-        */
         if fileKeys.count > 0 {
             manager.upload(multipartFormData: { mpForm in
                 for (k, v) in self.parameters! {

@@ -8,7 +8,6 @@
 import XCTest
 @testable import AsposeDiagramCloud
 
-
 class DiagramAPITests: AsposeDiagramCloudTests {
 
 	override func setUp() 
@@ -41,7 +40,7 @@ class DiagramAPITests: AsposeDiagramCloudTests {
         //let folder:String = StorageTestFOLDER
         let file:URL? = getURL(LocalTestSourceFile)
 		let sourceFilename:String? = "Convert.pdf"
-		
+        
         DiagramAPI.convertDocument(name: name, file: file!, sourceFilename: sourceFilename)
         {
             (response, error) in

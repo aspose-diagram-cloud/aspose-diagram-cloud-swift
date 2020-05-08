@@ -738,10 +738,18 @@ open class StorageAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
             "storageName": storageName
         ])
+        
+        //let str = "form-data; filename=\"\(path)\""
+        let headers: [String: String] = [
+            "Accept": "application/json",
+            "Content-Type": "multipart/form-data"
+            //"Content-Disposition": str
+            //"path": path
+        ]
 
         let requestBuilder: RequestBuilder<FilesUploadResult>.Type = AsposeDiagramCloudAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headers)
     }
 
 }
