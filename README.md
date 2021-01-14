@@ -1,25 +1,19 @@
-![](https://img.shields.io/badge/api-v3.0-lightgrey) ![Cocoapods](https://img.shields.io/cocoapods/v/AsposeDiagramCloud) ![Cocoapods platforms](https://img.shields.io/cocoapods/p/AsposeDiagramCloud) [![GitHub license](https://img.shields.io/github/license/aspose-diagram-cloud/aspose-Diagram-cloud-swift)](https://github.com/aspose-diagram-cloud/aspose-Diagram-cloud-swift/blob/master/LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/Aspose-Diagram-Cloud/aspose-diagram-cloud-swift) 
+![](https://img.shields.io/badge/api-v3.0-lightgrey) ![Cocoapods](https://img.shields.io/cocoapods/v/AsposeDiagramCloud) ![Cocoapods platforms](https://img.shields.io/cocoapods/p/AsposeDiagramCloud) [![GitHub license](https://img.shields.io/github/license/aspose-diagram-cloud/aspose-Diagram-cloud-swift)](https://github.com/aspose-diagram-cloud/aspose-Diagram-cloud-swift/blob/master/LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/Aspose-Diagram-Cloud/aspose-diagram-cloud-swift)
 
-# Swift SDK for Visio File Formats
+# Swift Cloud REST API for Visio Processing
 
-[Aspose.Diagram Cloud SDK for Swift](https://products.aspose.cloud/Diagram/swift) wraps the Aspose.Diagram REST API which allows developers to to view, export and convert Microsoft Visio format files to various other formats including fixed-layout, web and images.
+[Aspose.Diagram Cloud SDK for Swift](https://products.aspose.cloud/Diagram/swift) wraps the Aspose.Diagram REST API which allows developers to view, export and convert Microsoft Visio format files to various other formats including fixed-layout, web and images.
 
-## Process Diagrams in the Cloud
+## Visio Processing Features
 
+- [Convert diagrams](https://docs.aspose.cloud/diagram/convert-diagram-file-to-another-format/) to 20+ different file formats.
 - Retrieve document information of a Visio diagram.
 - Programmatically create a new Microsoft Visio diagram file.
 - Convert Visio flow-charts to other supported formats.
-- Upload your business oriented Visio diagrams to cloud storage.
-- Export Visio files to raster images, fixed-layout and HTML formats.
+- Upload your business-oriented Visio diagrams to cloud storage.
+- Export Visio files to raster images, fixed-layout, and HTML formats.
 
-## New Features in Version 20.3
-
-- Added support to draw Polyline, Line & Ellipse on a page.
-- Added ability to set page settings
-- Add support for addition of an empty page.
-- Ability to get page information.
-
-Please visit [Aspose.Diagram Cloud 20.3 Release Notes](https://docs.aspose.cloud/diagram/aspose-diagram-cloud-20-3-release-notes/) for detailed release notes.
+Please refer to [Developer's Guide](https://docs.aspose.cloud/diagram/developer-guide/) to see what else you can achieve.
 
 ## Read & Write Visio Formats
 
@@ -35,6 +29,15 @@ Please visit [Aspose.Diagram Cloud 20.3 Release Notes](https://docs.aspose.cloud
 ## Read Visio Formats
 
 **Microsoft Visio:** VDW, VSD, VSS, VST
+
+## New Features in Version 20.3
+
+- Added support to draw Polyline, Line & Ellipse on a page.
+- Added ability to set page settings
+- Add support for addition of an empty page.
+- Ability to get page information.
+
+Please visit [Aspose.Diagram Cloud 20.3 Release Notes](https://docs.aspose.cloud/diagram/aspose-diagram-cloud-20-3-release-notes/) for detailed release notes.
 
 ## Get Started with Aspose.Diagram Cloud SDK for Swift
 
