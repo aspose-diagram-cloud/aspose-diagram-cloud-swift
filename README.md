@@ -58,6 +58,20 @@ Alternatively, test run the POD as follows.
 
 Starting from v19.10, you can choose either to use Aspose Cloud-hosted image processing service (the standard way) or the Docker image from Docker Hub deployed on-premise to serve the requests. The details about key differences and deployment process will be described on the dedicated Docker Hub page as soon as it's released.
 
+## Create a New VDX Format Diagram in Swift
+
+```swift
+	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+	let diagramApi = DiagramAPI(appSid: "MY_CLIENT_ID", appKey: "MY_CLIENT_SECRET");
+
+	let name:String = "FileCreate.vdx"
+	let folder:String? = "my_output"
+	let isOverwrite:Bool? = true
+
+	let response = try diagramApi.createNew(name: name, folder: folder, isOverwrite: isOverwrite)
+```
+
+
 ## Aspose.Diagram Cloud SDKs in Popular Languages
 
 | .NET | Java | PHP | Python | Ruby | Node.js | Android | Perl | Swift |
